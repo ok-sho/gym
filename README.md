@@ -14,8 +14,8 @@ PHP & HTML with Tailwind CSS
 
 #### Aniket Sandhu
 - 404 page 
-- membership slection
-- view/change/cancel membership
+- account info page 
+- 
 - 
 
 #### Gurkeerit Braich
