@@ -38,8 +38,8 @@ function authorize($condition, $message = null, $status=404){
   return true;
 }
 
-function login (string $email): void {
-  $_SESSION['user'] = ['email' => $email,];
+function login (string $email, string $name): void {
+  $_SESSION['user'] = ['email' => $email,'full_name' => $name,];
   session_regenerate_id(true);
 }
 
