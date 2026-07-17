@@ -1,5 +1,5 @@
 # Fitness Class Booking System
-PHP & HTML with Tailwind CSS
+PHP (8.2.4), JS, HTML, Tailwind CSS
 
 **To run:**
 - (if needed) import `config/gym.sql` to local mySQL db
@@ -25,7 +25,7 @@ PHP & HTML with Tailwind CSS
 -
 
 #### Sho Okano
-- Instructor list 
+- Instructor list & individual view
 - Booking calendar 
 - Class event view
 -
