@@ -15,7 +15,7 @@ PHP & HTML with Tailwind CSS
 #### Aniket Sandhu
 - 404 page 
 - account info page 
-- 
+- membership page 
 - 
 
 #### Gurkeerit Braich
