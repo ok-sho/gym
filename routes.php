@@ -1,7 +1,9 @@
 <?php
 $router->get('/', 'controller/index.php');
 $router->get('/history', 'controller/history.php');
-$router->get('/instructors' , 'controller/instructors.php');
+$router->get('/instructors' , 'controller/instructors/index.php');
+$router->get('/instructors/view' , 'controller/instructors/view.php');
+
 
 $router->get('/booking' , 'controller/booking/index.php');
 
