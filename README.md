@@ -19,8 +19,8 @@ PHP (8.2.4), JS, HTML, Tailwind CSS
 - 
 
 #### Gurkeerit Braich
+- Book a class (View bookings, Confirm bookings, Capacity Check, Reschedule Appointment)
 - 
--
 -
 -
 

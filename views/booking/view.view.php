@@ -15,10 +15,13 @@
     <br>
     <p class="text-white">Max Participants: <?= $class['max_participants'] ?></p>
     <!-- <p class="py-4 italic text-white">Added by: <\?= $book['full_name'] ?></p> -->
+     <a href="<?= BASE_URL ?>/appointments/create?id=<?= $id ?>" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 inline-block mt-4">Book this class </a>
+     <br>
      <br>
      <p class="text-xl text-white">Taught by: <?= $class['instructor_name'] ?></p>
      <p class="text-xl text-white"><?= $class['bio'] ?></p>
      <img src="<?= BASE_URL . '/'. $class['profile_img_url']?>">
+     
     </div>
 </main>
 
