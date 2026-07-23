@@ -357,6 +357,9 @@ ALTER TABLE `member_bookings`
   ADD CONSTRAINT `fk_class_event_id` FOREIGN KEY (`class_event_id`) REFERENCES `class_events` (`id`),
   ADD CONSTRAINT `fk_user_id_mb` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
+ALTER TABLE `member_bookings`
+  ADD UNIQUE KEY `unique_user_class_event` (`user_id`, `class_event_id`);
+
 --
 -- Constraints for table `member_visits`
 --

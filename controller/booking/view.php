@@ -11,7 +11,8 @@ $class = $db->getOne($sql, $params);
 
 view('booking/view.view.php', [
     'heading' => "Class Details",
-    'class' => $class
+    'class' => $class,
+    'id' => $id
 ]);
 
 

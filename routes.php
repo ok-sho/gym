@@ -14,6 +14,12 @@ $router->get('/booking' , 'controller/booking/index.php');
 
 $router->get('/booking/view', 'controller/booking/view.php');
 
+//Appointments is what I am calling the booking system - Gurkeerit
+$router->get('/appointments', 'controller/appointments/index.php');
+$router->get('/appointments/create', 'controller/appointments/create.php');
+$router->post('/appointments/create', 'controller/appointments/store.php');
+$router->delete('/appointments/destroy', 'controller/appointments/destroy.php');
+
 // $router->get('/books/edit' , 'controller/books/edit.php');
 // $router->patch('/books/edit' , 'controller/books/edit_store.php');
 
