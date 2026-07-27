@@ -2,7 +2,7 @@
 <?php require base_path('views/partials/nav.php'); ?>
 <?php require base_path('views/partials/banner.php'); ?>
 
-/*popup for when user tries to book a class that is already full*/
+<!-- /*popup for when user tries to book a class that is already full*/ -->
 <?php if (!empty($_SESSION['flash_error'])): ?>
   <script>
     alert(<?= json_encode($_SESSION['flash_error']) ?>);
@@ -12,20 +12,20 @@
 
 <main>
 <div class="mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-8">
- <h2 class="text-5xl font-bold py-4 text-white"><?= $class['title'] ?></h2>
-    <p class="text-white">Starts: <?= $class['starts_at'] ?></p>
-    <p class="text-white">Ends: <?= $class['ends_at'] ?></p>
+ <h2 class="text-5xl font-bold py-4 text-black"><?= $class['title'] ?></h2>
+    <p class="text-black">Starts: <?= $class['starts_at'] ?></p>
+    <p class="text-black">Ends: <?= $class['ends_at'] ?></p>
     <br>
-    <p class="text-white">Instructor: <?= $class['instructor_name'] ?></p>
-    <p class="text-white">Spots taken: <?= $spots_taken ?> / <?= $class['max_participants'] ?></p>
+    <p class="text-black">Instructor: <?= $class['instructor_name'] ?></p>
+    <p class="text-black">Spots taken: <?= $spots_taken ?> / <?= $class['max_participants'] ?></p>
     <br>
-/*Calls our is_full func and shows confirm booking button if class is not full, otherwise shows a message that the class is full */
+<!-- *Calls our is_full func and shows confirm booking button if class is not full, otherwise shows a message that the class is full */ -->
     <?php if ($is_full): ?>
       <p class="text-red-500 text-xl">Sorry, this class is full.</p>
     <?php else: ?>
       <form method="POST" action="">
         <input type="hidden" name="id" value="<?= $class['id'] ?>">
-        <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500">
+        <button type="submit" class="rounded-md bg-[#F9D48A] px-3 py-2 text-sm font-semibold text-black shadow-xs hover:bg-[#D5920B]">
           Confirm Booking
         </button>
       </form>
