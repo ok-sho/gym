@@ -19,10 +19,10 @@ PHP (8.2.4), JS, HTML, Tailwind CSS
 - 
 
 #### Gurkeerit Braich
-- Book a class (View bookings, Confirm bookings, Capacity Check, Reschedule Appointment)
-- 
--
--
+- My Bookings (View bookings, Reschedule Appointment, Cancel Booking)
+- Confirm Booking (Capacity Check, Double Booking Check )
+- Home Page (Links, Welcome Message for User, Latest upcoming class, Gym Bulletin)
+- Css / design update 
 
 #### Sho Okano
 - Instructor list & individual view
