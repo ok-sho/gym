@@ -14,6 +14,11 @@ $params = ['user_id' => $userId];
 
 $bookings = $db->getAll($sql, $params);
 
+foreach ($bookings as &$booking_time) {
+    $booking_time['starts_at'] = date('M j, g:i A', strtotime($booking_time['starts_at']));
+    $booking_time['ends_at'] = date('M j, g:i A', strtotime($booking_time['ends_at']));
+}
+
 view('appointments/index.view.php', [
     'heading' => 'My Bookings',
     'bookings' => $bookings,
