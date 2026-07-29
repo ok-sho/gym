@@ -1,7 +1,5 @@
 <?php
 
-redirect_if_not_logged_in();
-
 $db = $container->resolve('Core\Database');
 
 $membership_tier_id = filter_input(INPUT_POST, 'membership_tier_id');

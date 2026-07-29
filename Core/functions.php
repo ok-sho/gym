@@ -38,8 +38,12 @@ function authorize($condition, $message = null, $status=404){
   return true;
 }
 
-function login (string $email, string $name): void {
-  $_SESSION['user'] = ['email' => $email,'full_name' => $name,];
+function login (string $email, string $name, bool $is_admin): void {
+  $_SESSION['user'] = [
+    'email' => $email,
+    'full_name' => $name,
+    'is_admin' => (bool) $is_admin,
+    ];
   session_regenerate_id(true);
 }
 
@@ -48,18 +52,4 @@ function logout (){
   session_destroy();
   $params = session_get_cookie_params();
   setcookie('PHPSESSID', '', time()-3600, $params['path'], $params['domain']);
-}
-
-function redirect_if_not_logged_in() {
-  if (!isset($_SESSION['user'])){
-    header('location: '.BASE_URL.'/login');
-    exit();
-  }
-}
-
-function redirect_if_logged_in() {
-  if (isset($_SESSION['user'])){
-    header('location: '.BASE_URL.'/books');
-    exit();
-  }
 }

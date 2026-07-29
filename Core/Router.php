@@ -8,7 +8,8 @@ class Router {
     $this->route[] = [
       'uri' => $uri,
       'controller' => $controller,
-      'method' => $method
+      'method' => $method,
+      'middleware' => null,
     ];
     return $this;
   }
@@ -31,6 +32,11 @@ class Router {
   // editing the whole thing
   public function put(string $uri, string $controller){
     return $this->add('PUT', $uri, $controller);
+  }
+
+  public function only($key){
+    $this->route[array_key_last($this->route)]['middleware'] = $key;
+    return $this;
   }
 
   public function getRoutes(){

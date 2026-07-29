@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2026 at 04:45 AM
+-- Generation Time: Jul 29, 2026 at 10:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -79,7 +79,28 @@ INSERT INTO `class_events` (`id`, `starts_at`, `ends_at`, `max_participants`, `i
 (36, '2026-08-17 08:00:00', '2026-08-17 09:00:00', 14, 3, 6),
 (37, '2026-08-19 08:00:00', '2026-08-19 09:00:00', 14, 3, 6),
 (38, '2026-08-24 08:00:00', '2026-08-24 09:00:00', 14, 3, 6),
-(39, '2026-08-26 08:00:00', '2026-08-26 09:00:00', 14, 3, 6);
+(39, '2026-08-26 08:00:00', '2026-08-26 09:00:00', 14, 3, 6),
+(40, '2026-07-18 11:00:00', '2026-07-18 12:00:00', 11, 2, 4),
+(41, '2026-07-19 11:00:00', '2026-07-19 12:00:00', 11, 2, 4),
+(42, '2026-07-27 08:00:00', '2026-07-27 09:00:00', 14, 3, 6),
+(43, '2026-07-29 08:00:00', '2026-07-29 09:00:00', 14, 3, 6),
+(44, '2026-07-20 08:00:00', '2026-07-20 09:00:00', 14, 3, 6),
+(45, '2026-07-22 08:00:00', '2026-07-22 09:00:00', 14, 3, 6),
+(46, '2026-07-27 12:00:00', '2026-07-27 13:00:00', 15, 1, 1),
+(47, '2026-07-29 12:00:00', '2026-07-29 13:00:00', 15, 1, 1),
+(48, '2026-07-20 12:00:00', '2026-07-20 13:00:00', 15, 1, 1),
+(49, '2026-07-22 12:00:00', '2026-07-22 13:00:00', 15, 1, 1),
+(50, '2026-07-28 09:00:00', '2026-07-28 10:30:00', 10, 1, 2),
+(51, '2026-07-30 09:00:00', '2026-07-30 10:30:00', 10, 1, 2),
+(52, '2026-07-21 09:00:00', '2026-07-21 10:30:00', 10, 1, 2),
+(53, '2026-07-23 09:00:00', '2026-07-23 10:30:00', 10, 1, 2),
+(54, '2026-07-23 18:00:00', '2026-07-23 19:00:00', 11, 2, 4),
+(55, '2026-07-30 18:00:00', '2026-07-30 19:00:00', 11, 2, 4),
+(56, '2026-07-31 10:00:00', '2026-07-31 10:30:00', 5, 2, 3),
+(57, '2026-07-24 10:00:00', '2026-07-24 10:30:00', 5, 2, 3),
+(58, '2026-07-31 13:00:00', '2026-07-31 13:30:00', 5, 3, 3),
+(59, '2026-07-24 13:00:00', '2026-07-24 13:30:00', 5, 3, 3),
+(60, '2026-07-25 11:00:00', '2026-07-25 13:00:00', 18, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -189,6 +210,18 @@ CREATE TABLE `member_bookings` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `member_bookings`
+--
+
+INSERT INTO `member_bookings` (`id`, `class_event_id`, `user_id`) VALUES
+(3, 1, 1),
+(16, 9, 1),
+(9, 23, 1),
+(15, 27, 1),
+(13, 29, 1),
+(5, 35, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -215,15 +248,17 @@ CREATE TABLE `users` (
   `email` varchar(225) NOT NULL,
   `password` varchar(225) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `membership_tier_id` int(11) DEFAULT NULL
+  `membership_tier_id` int(11) DEFAULT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `given_name`, `family_name`, `email`, `password`, `created_at`, `membership_tier_id`) VALUES
-(1, 'Ash', 'Ketchum', 'ash@catchem.com', '$2y$10$k3k6b01jEokk3MJdKB4.WOqlAaAIPyIsQPcPSKxfRvVfzV2DXDnTa', '2026-07-11 00:52:04', NULL);
+INSERT INTO `users` (`id`, `given_name`, `family_name`, `email`, `password`, `created_at`, `membership_tier_id`, `is_admin`) VALUES
+(1, 'Ash', 'Ketchum', 'ash@catchem.com', '$2y$10$k3k6b01jEokk3MJdKB4.WOqlAaAIPyIsQPcPSKxfRvVfzV2DXDnTa', '2026-07-11 00:52:04', 1, 0),
+(2, 'Admin', 'Istrator', 'admin@gym.com', '$2y$10$OIyr9l2J0vuvKEktp12MrOKtng0SjbWccegTNNsBQYTV6gfM4pDx.', '2026-07-29 20:41:15', NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -267,8 +302,8 @@ ALTER TABLE `membership_tiers`
 --
 ALTER TABLE `member_bookings`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_id_mb` (`user_id`),
-  ADD KEY `fk_class_event_id` (`class_event_id`);
+  ADD UNIQUE KEY `class_event_id` (`class_event_id`,`user_id`),
+  ADD KEY `fk_user_id_mb` (`user_id`);
 
 --
 -- Indexes for table `member_visits`
@@ -294,7 +329,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `class_events`
 --
 ALTER TABLE `class_events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `class_types`
@@ -318,7 +353,7 @@ ALTER TABLE `membership_tiers`
 -- AUTO_INCREMENT for table `member_bookings`
 --
 ALTER TABLE `member_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `member_visits`
@@ -330,7 +365,7 @@ ALTER TABLE `member_visits`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -366,7 +401,6 @@ ALTER TABLE `member_bookings`
 ALTER TABLE `member_visits`
   ADD CONSTRAINT `fk_member_booking_id` FOREIGN KEY (`member_booking_id`) REFERENCES `member_bookings` (`id`),
   ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
 --
 -- Constraints for table `users`
 --

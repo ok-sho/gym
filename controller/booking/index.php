@@ -1,5 +1,4 @@
 <?php
-redirect_if_not_logged_in();
 
 $db = $container->resolve('Core\Database');
 $class_types = $db->getAll("SELECT id, title FROM class_types");

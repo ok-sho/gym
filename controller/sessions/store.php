@@ -14,7 +14,7 @@ if (!Validator::textVal($password,7,225)){
 
 $db = $container->resolve('Core\Database');
 
-$user = $db->getOne("SELECT id, concat(given_name,' ',family_name) AS full_name, password from users where email = :email", ["email"=>$email]);
+$user = $db->getOne("SELECT id, concat(given_name,' ',family_name) AS full_name, password, is_admin from users where email = :email", ["email"=>$email]);
 
 if(!$user){
       $error .= "The email is not associated with an account. ";
@@ -23,7 +23,7 @@ if(!$user){
 }
 
 if (empty($error)){
-      login($email, $user['full_name']);
+      login($email, $user['full_name'], $user['is_admin']);
       header("location: ./");
       exit;
 }
