@@ -5,14 +5,14 @@
     <main>
         <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 
-            <div class="overflow-hidden rounded-lg bg-gray-800 shadow">
+            <div class="overflow-hidden rounded-xl border border-[#53796E] bg-[#426158] shadow">
 
-                <div class="border-b border-white/10 px-6 py-5">
+                <div class="border-b border-[#53796E] px-6 py-5">
                     <h2 class="text-xl font-semibold text-white">
                         Personal Information
                     </h2>
 
-                    <p class="mt-1 text-sm text-gray-400">
+                    <p class="mt-1 text-sm text-gray-200">
                         View or update the information connected to your gym account.
                     </p>
                 </div>
@@ -98,7 +98,7 @@
 
                         <div class="border-t border-white/10 pt-6">
 
-                            <p class="text-sm text-gray-400">
+                            <p class="text-sm text-gray-200">
                                 Membership
                             </p>
 
@@ -111,7 +111,7 @@
                         </div>
 
                         <div>
-                            <p class="text-sm text-gray-400">
+                            <p class="text-sm text-gray-200">
                                 Member Since
                             </p>
 
@@ -129,21 +129,21 @@
 
                         <button
                                 type="submit"
-                                class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                                class="rounded-md border border-[#C8B18A] bg-[#F6E7C8] px-4 py-2 text-sm font-semibold text-[#426158] transition hover:bg-[#EAD8B3]"
                         >
                             Update Account
                         </button>
 
                         <a
                                 href="<?= BASE_URL ?>/tier"
-                                class="rounded-md bg-gray-700 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-600"
+                                class="rounded-md border border-[#C8B18A] bg-[#F6E7C8] px-4 py-2 text-sm font-semibold text-[#426158] transition hover:bg-[#EAD8B3]"
                         >
                             View Membership
                         </a>
 
                         <a
                                 href="<?= BASE_URL ?>/"
-                                class="rounded-md bg-gray-700 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-600"
+                                class="rounded-md border border-[#C8B18A] bg-[#F6E7C8] px-4 py-2 text-sm font-semibold text-[#426158] transition hover:bg-[#EAD8B3]"
                         >
                             Return Home
                         </a>

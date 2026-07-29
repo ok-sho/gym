@@ -25,6 +25,6 @@ authorize($user, 'Account could not be found.');
 
 view('account/index.view.php', [
     'heading' => 'Account Information',
-    'user' => $user , 
+    'user' => $user ,
     'error' => []
 ]);

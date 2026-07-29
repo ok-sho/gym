@@ -5,7 +5,7 @@
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
-            <div class="mb-8 rounded-md bg-gray-800 p-6">
+            <div class="mb-8 rounded-md bg-[#426158] border border-[#53796E] p-6">
 
                 <h2 class="text-2xl font-bold text-white">
                     Current Membership
@@ -13,7 +13,7 @@
 
                 <?php if ($user['membership_tier_id']): ?>
 
-                    <h3 class="mt-4 text-xl font-semibold text-indigo-400">
+                    <h3 class="mt-4 text-xl font-semibold text-white">
                         <?= htmlspecialchars($user['title']) ?>
                     </h3>
 
@@ -41,7 +41,7 @@
 
             </div>
 
-            <h2 class="mb-5 text-2xl font-bold text-white">
+            <h2 class="mb-5 text-2xl font-bold text-[#426158]">
                 Choose a Membership
             </h2>
 
@@ -49,9 +49,9 @@
 
                 <?php foreach ($membership_tiers as $tier): ?>
 
-                    <div class="rounded-md bg-gray-800 p-6">
+                    <div class="rounded-md bg-[#426158] border border-[#53796E] p-6">
 
-                        <h3 class="text-xl font-bold text-indigo-400">
+                        <h3 class="text-xl font-bold text-white">
                             <?= htmlspecialchars($tier['title']) ?>
                         </h3>
 
@@ -79,7 +79,7 @@
 
                             <button
                                     type="submit"
-                                    class="mt-5 rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                                    class="rounded-md border border-[#C8B18A] bg-[#F6E7C8] px-4 py-2 text-sm font-semibold text-[#426158] transition hover:bg-[#EAD8B3]"
                             >
                                 <?php if ($user['membership_tier_id'] == $tier['id']): ?>
                                     Current Membership
