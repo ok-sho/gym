@@ -30,6 +30,8 @@ $router->post('/tier', 'controller/account/tier_store.php')->only('auth');
 
 $router->get('/logout', 'controller/sessions/destroy.php')->only('auth');
 
+// admin dashboard
+$router->get('/admin', 'controller/admin/index.php')->only('admin');
 
 $routes = $router->getRoutes();
       
