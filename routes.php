@@ -1,56 +1,45 @@
 <?php
-$router->get('/', 'controller/index.php');
-$router->get('/history', 'controller/history.php');
-$router->get('/instructors' , 'controller/instructors/index.php');
-$router->get('/instructors/view' , 'controller/instructors/view.php');
 
+use Core\Middleware\Middleware;
 
-$router->get('/booking' , 'controller/booking/index.php');
+$router->get('/', 'controller/index.php')->only('auth');
 
-// $router->delete('/books' , 'controller/books/destroy.php');
+$router->get('/instructors' , 'controller/instructors/index.php')->only('auth');
+$router->get('/instructors/view' , 'controller/instructors/view.php')->only('auth');
 
-// $router->get('/books/create', 'controller/books/create.php');
-// $router->post('/books/create', 'controller/books/store.php');
+// Weekly calendar and individual class views
+$router->get('/booking' , 'controller/booking/index.php')->only('auth');
+$router->get('/booking/view', 'controller/booking/view.php')->only('auth');
 
-$router->get('/booking/view', 'controller/booking/view.php');
+// CRUD for user's booked classes
+$router->get('/appointments', 'controller/appointments/index.php')->only('auth');
+$router->get('/appointments/create', 'controller/appointments/create.php')->only('auth');
+$router->post('/appointments/create', 'controller/appointments/store.php')->only('auth');
+$router->delete('/appointments/destroy', 'controller/appointments/destroy.php')->only('auth');
 
-//Appointments is what I am calling the booking system - Gurkeerit
-$router->get('/appointments', 'controller/appointments/index.php');
-$router->get('/appointments/create', 'controller/appointments/create.php');
-$router->post('/appointments/create', 'controller/appointments/store.php');
-$router->delete('/appointments/destroy', 'controller/appointments/destroy.php');
+$router->get('/signup', 'controller/registration/create.php')->only('guest');
+$router->post('/signup', 'controller/registration/store.php')->only('guest');
 
-// $router->get('/books/edit' , 'controller/books/edit.php');
-// $router->patch('/books/edit' , 'controller/books/edit_store.php');
+$router->get('/login', 'controller/sessions/create.php')->only('guest');
+$router->post('/login', 'controller/sessions/store.php')->only('guest');
 
-$router->get('/signup', 'controller/registration/create.php');
-$router->post('/signup', 'controller/registration/store.php');
+// CRUD for user's account info and membership
+$router->get('/account', 'controller/account/index.php')->only('auth');
+$router->get('/tier', 'controller/account/tier.php')->only('auth');
+$router->post('/tier', 'controller/account/tier_store.php')->only('auth');
 
-$router->get('/login', 'controller/sessions/create.php');
-$router->post('/login', 'controller/sessions/store.php');
-
-$router->get('/account', 'controller/account/index.php');
-$router->get('/tier', 'controller/account/tier.php');
-$router->post('/tier', 'controller/account/tier_store.php');
-
-$router->get('/logout', 'controller/sessions/destroy.php');
+$router->get('/logout', 'controller/sessions/destroy.php')->only('auth');
 
 
 $routes = $router->getRoutes();
       
       $uri = parse_url(getUrl())['path'];
       $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
-      /* short for
-        if ($_POST['_method']){
-          $method = $_POST['_method'];
-        } else {
-          $method = $_SERVER['REQUEST_METHOD'];
-          }
-      */
 
       foreach ($routes as $route){
         if ($route['uri'] === $uri && $route['method'] === strtoupper($method)){
-            return require base_path($route['controller']);
+          Middleware::resolve($route['middleware']);
+          return require base_path($route['controller']);
         }
       } 
       abort();

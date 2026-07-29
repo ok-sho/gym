@@ -1,5 +1,4 @@
 <?php
-redirect_if_not_logged_in();
 
 $id= filter_input(INPUT_GET, 'id');
 $params =['id' => $id];

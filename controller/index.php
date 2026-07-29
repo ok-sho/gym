@@ -1,7 +1,5 @@
 <?php 
 
-redirect_if_not_logged_in();
-
 $db = $container->resolve('Core\Database');
 $user = $db->getOne("SELECT id FROM users WHERE email = :email", ['email' => $_SESSION['user']['email']]);
 
