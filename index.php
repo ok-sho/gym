@@ -26,7 +26,7 @@ spl_autoload_register(
   }
 );
 
-$wm = new WeeklyCalendar();
+$wc = new WeeklyCalendar();
 
 $config = require(base_path('config/config.php'));
 require base_path('Core/functions.php');

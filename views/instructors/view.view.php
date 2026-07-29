@@ -5,14 +5,14 @@
 <main>
   <div class="mx-auto max-w-7xl px-12 py-8 sm:px-6 lg:px-8">
     <img class="size-60 rounded-3xl outline -outline-offset-1 outline-white/10" src="<?= BASE_URL . '/'. $instructor['profile_img_url']?>">
-    <h2 class="text-5xl font-bold py-4 text-white"><?= $instructor['instructor_name'] ?></h2>
-    <p class="text-white"><?= $instructor['bio'] ?></p>
+    <h2 class="text-5xl font-bold py-4 text-[#426158]"><?= $instructor['instructor_name'] ?></h2>
+    <p class="text-black"><?= $instructor['bio'] ?></p>
     
     <br>
-    <p class="text-white font-bold">Classes Taught:</p>
+    <p class="text-black font-bold">Classes Taught:</p>
     <ul class="list-disc list-inside">
       <?php foreach ($classes as $class):  ?>
-      <li class="text-white"><?= $class['title'] ?></li>
+      <li class="text-black"><?= $class['title'] ?></li>
       <?php endforeach; ?>
     </ul>
   </div>
