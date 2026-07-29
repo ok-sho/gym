@@ -12,6 +12,7 @@
 
 <main>
 <div class="mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-8">
+  <p class="mt-6 italic">Review details before confirming your class booking:</p>
  <h2 class="text-5xl font-bold py-4 text-black"><?= $class['title'] ?></h2>
     <p class="text-black">Starts: <?= $class['starts_at'] ?></p>
     <p class="text-black">Ends: <?= $class['ends_at'] ?></p>
@@ -26,7 +27,7 @@
       <form method="POST" action="">
         <input type="hidden" name="id" value="<?= $class['id'] ?>">
         <button type="submit" class="rounded-md bg-[#F9D48A] px-3 py-2 text-sm font-semibold text-black shadow-xs hover:bg-[#D5920B]">
-          Confirm Booking
+          Confirm
         </button>
       </form>
     <?php endif; ?>
