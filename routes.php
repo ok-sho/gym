@@ -34,6 +34,8 @@ $router->patch('/account', 'controller/account/update.php');
 $router->get('/tier', 'controller/account/tier.php');
 $router->post('/tier', 'controller/account/tier_store.php');
 
+$router->get('/admin', 'controller/admin/index.php');
+
 $router->get('/logout', 'controller/sessions/destroy.php');
 
 
