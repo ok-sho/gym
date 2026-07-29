@@ -30,6 +30,7 @@ $router->get('/login', 'controller/sessions/create.php');
 $router->post('/login', 'controller/sessions/store.php');
 
 $router->get('/account', 'controller/account/index.php');
+$router->patch('/account', 'controller/account/update.php');
 $router->get('/tier', 'controller/account/tier.php');
 $router->post('/tier', 'controller/account/tier_store.php');
 

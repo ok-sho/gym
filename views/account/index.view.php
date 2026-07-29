@@ -2,105 +2,159 @@
 <?php require base_path('views/partials/nav.php'); ?>
 <?php require base_path('views/partials/banner.php'); ?>
 
-<main>
-    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <main>
+        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 
-        <div class="overflow-hidden rounded-lg bg-gray-800 shadow">
+            <div class="overflow-hidden rounded-lg bg-gray-800 shadow">
 
-            <div class="border-b border-white/10 px-6 py-5">
-                <h2 class="text-xl font-semibold text-white">
-                    Personal Information
-                </h2>
+                <div class="border-b border-white/10 px-6 py-5">
+                    <h2 class="text-xl font-semibold text-white">
+                        Personal Information
+                    </h2>
 
-                <p class="mt-1 text-sm text-gray-400">
-                    View the information connected to your gym account.
-                </p>
-            </div>
-
-            <div class="px-6 py-6">
-
-                <dl class="divide-y divide-white/10">
-
-                    <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-400">
-                            First Name
-                        </dt>
-
-                        <dd class="mt-1 text-sm text-white sm:col-span-2 sm:mt-0">
-                            <?= htmlspecialchars($user['given_name']) ?>
-                        </dd>
-                    </div>
-
-                    <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-400">
-                            Last Name
-                        </dt>
-
-                        <dd class="mt-1 text-sm text-white sm:col-span-2 sm:mt-0">
-                            <?= htmlspecialchars($user['family_name']) ?>
-                        </dd>
-                    </div>
-
-                    <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-400">
-                            Email Address
-                        </dt>
-
-                        <dd class="mt-1 text-sm text-white sm:col-span-2 sm:mt-0">
-                            <?= htmlspecialchars($user['email']) ?>
-                        </dd>
-                    </div>
-
-                    <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-400">
-                            Membership
-                        </dt>
-
-                        <dd class="mt-1 text-sm text-white sm:col-span-2 sm:mt-0">
-                            <?= htmlspecialchars(
-                                    $user['membership_title'] ?? 'No membership selected'
-                            ) ?>
-                        </dd>
-                    </div>
-
-                    <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-400">
-                            Member Since
-                        </dt>
-
-                        <dd class="mt-1 text-sm text-white sm:col-span-2 sm:mt-0">
-                            <?= date(
-                                    'F j, Y',
-                                    strtotime($user['created_at'])
-                            ) ?>
-                        </dd>
-                    </div>
-
-                </dl>
-
-                <div class="mt-6 flex flex-wrap gap-3">
-
-                    <a
-                            href="<?= BASE_URL ?>/tier"
-                            class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
-                    >
-                        View Membership
-                    </a>
-
-                    <a
-                            href="<?= BASE_URL ?>/"
-                            class="rounded-md bg-gray-700 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-600"
-                    >
-                        Return Home
-                    </a>
-
+                    <p class="mt-1 text-sm text-gray-400">
+                        View or update the information connected to your gym account.
+                    </p>
                 </div>
+
+                <form
+                        method="POST"
+                        action="<?= BASE_URL ?>/account"
+                        class="px-6 py-6"
+                >
+
+                    <input type="hidden" name="_method" value="PATCH">
+
+                    <div class="space-y-6">
+
+                        <div>
+                            <label
+                                    for="given_name"
+                                    class="block text-sm font-medium text-gray-300"
+                            >
+                                First Name
+                            </label>
+
+                            <input
+                                    id="given_name"
+                                    name="given_name"
+                                    type="text"
+                                    value="<?= htmlspecialchars($user['given_name']) ?>"
+                                    class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3 py-2 text-white ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-indigo-500"
+                            >
+
+                            <?php if (!empty($error['given_name'])): ?>
+                                <p class="mt-2 text-sm text-red-400">
+                                    <?= htmlspecialchars($error['given_name']) ?>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+
+                        <div>
+                            <label
+                                    for="family_name"
+                                    class="block text-sm font-medium text-gray-300"
+                            >
+                                Last Name
+                            </label>
+
+                            <input
+                                    id="family_name"
+                                    name="family_name"
+                                    type="text"
+                                    value="<?= htmlspecialchars($user['family_name']) ?>"
+                                    class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3 py-2 text-white ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-indigo-500"
+                            >
+
+                            <?php if (!empty($error['family_name'])): ?>
+                                <p class="mt-2 text-sm text-red-400">
+                                    <?= htmlspecialchars($error['family_name']) ?>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+
+                        <div>
+                            <label
+                                    for="email"
+                                    class="block text-sm font-medium text-gray-300"
+                            >
+                                Email Address
+                            </label>
+
+                            <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    value="<?= htmlspecialchars($user['email']) ?>"
+                                    class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3 py-2 text-white ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-indigo-500"
+                            >
+
+                            <?php if (!empty($error['email'])): ?>
+                                <p class="mt-2 text-sm text-red-400">
+                                    <?= htmlspecialchars($error['email']) ?>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-6">
+
+                            <p class="text-sm text-gray-400">
+                                Membership
+                            </p>
+
+                            <p class="mt-1 text-sm text-white">
+                                <?= htmlspecialchars(
+                                        $user['membership_title']
+                                        ?? 'No membership selected'
+                                ) ?>
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-400">
+                                Member Since
+                            </p>
+
+                            <p class="mt-1 text-sm text-white">
+                                <?= date(
+                                        'F j, Y',
+                                        strtotime($user['created_at'])
+                                ) ?>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap gap-3">
+
+                        <button
+                                type="submit"
+                                class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                        >
+                            Update Account
+                        </button>
+
+                        <a
+                                href="<?= BASE_URL ?>/tier"
+                                class="rounded-md bg-gray-700 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-600"
+                        >
+                            View Membership
+                        </a>
+
+                        <a
+                                href="<?= BASE_URL ?>/"
+                                class="rounded-md bg-gray-700 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-600"
+                        >
+                            Return Home
+                        </a>
+
+                    </div>
+
+                </form>
 
             </div>
 
         </div>
-
-    </div>
-</main>
+    </main>
 
 <?php require base_path('views/partials/footer.php'); ?>
