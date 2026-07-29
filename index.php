@@ -1,5 +1,6 @@
 <?php 
 use Core\Router;
+use Core\WeeklyCalendar;
 
 const BASE_PATH = __DIR__.'/';
 const BASE_URL = "http://localhost/gym";
@@ -24,6 +25,8 @@ spl_autoload_register(
     require base_path("{$class}.php");
   }
 );
+
+$wc = new WeeklyCalendar();
 
 $config = require(base_path('config/config.php'));
 require base_path('Core/functions.php');

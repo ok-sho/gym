@@ -1,5 +1,5 @@
 # Fitness Class Booking System
-PHP & HTML with Tailwind CSS
+PHP (8.2.4), JS, HTML, Tailwind CSS
 
 **To run:**
 - (if needed) import `config/gym.sql` to local mySQL db
@@ -14,18 +14,18 @@ PHP & HTML with Tailwind CSS
 
 #### Aniket Sandhu
 - 404 page 
-- membership slection
-- view/change/cancel membership
+- account info page 
+- membership page 
 - 
 
 #### Gurkeerit Braich
-- 
--
--
--
+- My Bookings (View bookings, Reschedule Appointment, Cancel Booking)
+- Confirm Booking (Capacity Check, Double Booking Check )
+- Home Page (Links, Welcome Message for User, Latest upcoming class, Gym Bulletin)
+- Css / design update 
 
 #### Sho Okano
-- Instructor list 
+- Instructor list & individual view
 - Booking calendar 
 - Class event view
 -

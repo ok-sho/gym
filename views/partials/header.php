@@ -4,6 +4,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 </head>
 
-<html class="h-full bg-gray-900">
+<html class="h-full bg-[#FFEFD5]">
 <body class="h-full">
 <div class="min-h-full">
