@@ -18,9 +18,7 @@ $user = $db->getOne("SELECT id, concat(given_name,' ',family_name) AS full_name,
 
 if(!$user){
       $error .= "The email is not associated with an account. ";
-}
-
-if (!password_verify($password, $user['password']) ) {
+} elseif (!password_verify($password, $user['password'])) {
       $error .= "Credentials do not match.";
 }
 
@@ -29,6 +27,9 @@ if (empty($error)){
       header("location: ./");
       exit;
 }
+$_SESSION['flash_error'] = $error;
+header("location: " . BASE_URL . "/login");
+exit;
  
 view('sessions/create.view.php', [
       'error' =>$error,

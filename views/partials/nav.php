@@ -42,8 +42,8 @@
                 <div class="flex items-center">
                   <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                      <a href="<?=  BASE_URL ?>/login" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/login') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Log In</a>
-                      <a href="<?=  BASE_URL ?>/signup" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/signup') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Sign Up</a>
+                      <a href="<?=  BASE_URL ?>/login" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/login') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Log In</a>
+                      <a href="<?=  BASE_URL ?>/signup" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/signup') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Sign Up</a>
                     </div>
                   </div>
                 </div>

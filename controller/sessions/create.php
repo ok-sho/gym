@@ -7,7 +7,7 @@
 $error = '';
 
 view('sessions/create.view.php', [
-  'errors' => $error,
+  'error' => $error,
 ]);
 
 ?>
