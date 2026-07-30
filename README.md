@@ -10,6 +10,7 @@ PHP (8.2.4), JS, HTML, Tailwind CSS
   - (admin) email `admin@gym.com` & password `P@s5word`
 - Or register new test user
     - To add admin access to a newly created account, change the value in the user's `is_admin` column of the users table to `1` (true). If you are logged in, you will need to log out and log in again for the change to take effect.
+      - Admin accounts will see the `Admin Panel` option in their nav manu when logged in
 
 
 ### Contributions
