@@ -14,7 +14,7 @@ try {
     ]);
     header("location: " . BASE_URL . "/appointments");
     exit;
-//idk if this is best way to show an error message if class is already booked 
+
 } catch (PDOException $e) {
     if ($e->getCode() == 23000) {
         $_SESSION['flash_error'] = "You've already booked this class.";

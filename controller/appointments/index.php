@@ -3,7 +3,7 @@
 $db = $container->resolve('Core\Database');
 
 $user = $db->getOne("SELECT id FROM users WHERE email = :email", ['email' => $_SESSION['user']['email']]);
-// vdd($_SESSION);
+
 $userId = $user['id'];
 
 $sql = "SELECT member_bookings.id, class_events.id as class_event_id, class_events.starts_at, class_events.ends_at, class_types.title,concat(instructors.given_name,' ',instructors.family_name) as instructor_name 

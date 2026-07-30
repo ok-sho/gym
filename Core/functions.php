@@ -42,7 +42,7 @@ function login (string $email, string $name, bool $is_admin): void {
   $_SESSION['user'] = [
     'email' => $email,
     'full_name' => $name,
-    'is_admin' => (bool) $is_admin,
+    'is_admin' => $is_admin,
     ];
   session_regenerate_id(true);
 }

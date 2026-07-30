@@ -3,7 +3,6 @@
 use Core\Validator;
 
 $db = $container->resolve('Core\Database');
-// $users= $db->getAll("select id, concat(first_name,' ',last_name) as full_name from users ");
 $user=[];
 $error=[];
 
@@ -20,11 +19,11 @@ if (!Validator::emailVal($user['email'])){
       $error['email']="Email is not valid";
 }
 $user['password'] = filter_input(INPUT_POST,'password');
-if (!Validator::textVal($user['password'],7,225)){
+if (!Validator::passwordVal($user['password'])){
       $error['password']="Password must be between 1 and 225 characters";
 }
 $user['rePassword'] = filter_input(INPUT_POST,'rePassword');
-if (!Validator::textVal($user['rePassword'],7,225)){
+if (!Validator::passwordVal($user['rePassword'])){
       $error['rePassword']="Password must be between 1 and 225 characters";
 }
 
