@@ -25,6 +25,7 @@ $router->post('/login', 'controller/sessions/store.php')->only('guest');
 
 // CRUD for user's account info and membership
 $router->get('/account', 'controller/account/index.php')->only('auth');
+$router->patch('/account', 'controller/account/update.php')->only('auth');
 $router->get('/tier', 'controller/account/tier.php')->only('auth');
 $router->post('/tier', 'controller/account/tier_store.php')->only('auth');
 
