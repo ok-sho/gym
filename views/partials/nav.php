@@ -3,18 +3,20 @@
           <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
               <div class="shrink-0">
-                <img src="<?= BASE_URL ?>/assets/stretch.jpg?color=indigo&shade=500 " alt="Your Company" class="size-8 rounded-full" />
+                <img src="<?= BASE_URL ?>/assets/stretch.png" alt="Your Company" class="size-8 rounded-full" />
               </div>
               <div class="hidden md:block">
-                <div class="ml-10 flex items-baseline space-x-4">
-                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+                <div class="ml-5 flex items-baseline space-x-4">
                   <?php if(isset($_SESSION['user'])): ?>
                     <a href="<?=  BASE_URL ?>/" class="rounded-md px-3 py-2 text-sm font-medium 
                   <?= urlIs('/') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>
                   ">Home</a>
                     <a href="<?=  BASE_URL ?>/instructors" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/instructors') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Instructors</a>
                     <a href="<?=  BASE_URL ?>/booking" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/booking') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Book a Class</a>
-                    <a href="<?=  BASE_URL ?>/appointments" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/appointments') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>"> My Bookings </a>
+                    <a href="<?=  BASE_URL ?>/appointments" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/appointments') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">My Bookings</a>
+                  <?php endif ?>
+                  <?php if(isset($_SESSION['user']) && $_SESSION['user']['is_admin'] === true ): ?>
+                    <a href="<?=  BASE_URL ?>/admin" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/admin') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Admin Panel</a>
                   <?php endif ?>
                 </div>
               </div>
@@ -42,8 +44,8 @@
                 <div class="flex items-center">
                   <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                      <a href="<?=  BASE_URL ?>/login" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/login') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Log In</a>
-                      <a href="<?=  BASE_URL ?>/signup" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/signup') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Sign Up</a>
+                      <a href="<?=  BASE_URL ?>/login" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/login') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Log In</a>
+                      <a href="<?=  BASE_URL ?>/signup" class="rounded-md px-3 py-2 text-sm font-medium <?= urlIs('/signup') ? 'text-white bg-[#53796E]' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Sign Up</a>
                     </div>
                   </div>
                 </div>
@@ -67,12 +69,15 @@
 
         <el-disclosure id="mobile-menu" hidden class="block md:hidden hidden">
           <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
             <?php if(isset($_SESSION['user'])): ?>
             <a href="<?=  BASE_URL ?>/" class="block rounded-md px-3 py-2 text-base font-medium <?= urlIs('/') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Home</a>
             <a href="<?=  BASE_URL ?>/instructors" class="block rounded-md px-3 py-2 text-base font-medium <?= urlIs('/instructors') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Instructors</a>
             <a href="<?=  BASE_URL ?>/booking" class="block rounded-md px-3 py-2 text-base font-medium <?= urlIs('/booking') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Book a Class</a>
-            <a href="<?=  BASE_URL ?>/appointments" class="block rounded-md px-3 py-2 text-base font-medium <?= urlIs('/appointments') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>"> My Bookings </a>
+            <a href="<?=  BASE_URL ?>/appointments" class="block rounded-md px-3 py-2 text-base font-medium <?= urlIs('/appointments') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">My Bookings</a>
+            <?php endif ?>
+            <?php if(isset($_SESSION['user']) && $_SESSION['user']['is_admin'] === true ): ?>
+              <a href="<?=  BASE_URL ?>/admin" class="block rounded-md px-3 py-2 text-base font-medium <?= urlIs('/admin') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">Admin Panel</a>
+              
             <?php endif ?>
           </div>
           <div class="border-t border-white/10 pt-4 pb-3">
@@ -102,6 +107,8 @@
       </nav>
 
 <?php 
+
+// for opening and closing the mobile nav menu
 echo "
 <script>
   const menuBtn = document.getElementById('menu-btn');

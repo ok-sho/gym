@@ -6,7 +6,7 @@
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
     <?php foreach ($bookings as $booking): ?>
-    <div class="border border-[#F7C664] bg-[#53796E] rounded-xl px-6 py-4 mb-4">
+    <div class=" bg-[#53796E] rounded-xl px-6 py-4 mb-4">
      <p class="text-white text-xl font-bold"><?= $booking['title'] ?></p>
      <p class="text-white">Starts: <?= $booking['starts_at'] ?></p>
      <p class="text-white">Ends: <?= $booking['ends_at'] ?></p>

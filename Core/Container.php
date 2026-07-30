@@ -1,8 +1,6 @@
 <?php
 namespace Core;
 
-// use Exception;
-
 class Container {
   protected array $bindings=[];
 

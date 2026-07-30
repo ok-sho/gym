@@ -8,27 +8,28 @@ if (!Validator::emailVal($email)){
       $error .= "Please enter a valid email address. ";
 }
 $password = filter_input(INPUT_POST,'password');
-if (!Validator::textVal($password,7,225)){
+if (!Validator::passwordVal($password)){
       $error .= "Please enter a valid password. ";
 }
 
 $db = $container->resolve('Core\Database');
 
-$user = $db->getOne("SELECT id, concat(given_name,' ',family_name) AS full_name, password from users where email = :email", ["email"=>$email]);
+$user = $db->getOne("SELECT id, concat(given_name,' ',family_name) AS full_name, password, is_admin from users where email = :email", ["email"=>$email]);
 
 if(!$user){
-      $error .= "The email is not associated with an account. ";
-}
-
-if (!password_verify($password, $user['password']) ) {
+      $error .= "The email is not associated with an account.";
+} elseif (!password_verify($password, $user['password'])) {
       $error .= "Credentials do not match.";
 }
 
 if (empty($error)){
-      login($email, $user['full_name']);
+      login($email, $user['full_name'], $user['is_admin']);
       header("location: ./");
       exit;
 }
+$_SESSION['flash_error'] = $error;
+header("location: " . BASE_URL . "/login");
+exit;
  
 view('sessions/create.view.php', [
       'error' =>$error,

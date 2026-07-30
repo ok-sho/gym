@@ -1,3 +1,3 @@
 <?php
 logout();
-redirect_if_not_logged_in();
+header('location: '.BASE_URL.'/login');

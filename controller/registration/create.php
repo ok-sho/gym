@@ -1,7 +1,5 @@
 <?php
 
-redirect_if_logged_in();
-
 $user = [];
 $error = [];
 

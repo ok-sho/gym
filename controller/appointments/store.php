@@ -1,5 +1,4 @@
 <?php 
-redirect_if_not_logged_in();
 
 $id = filter_input(INPUT_POST, 'id');
 $db = $container->resolve('Core\Database');
@@ -15,7 +14,7 @@ try {
     ]);
     header("location: " . BASE_URL . "/appointments");
     exit;
-//idk if this is best way to show an error message if class is already booked 
+
 } catch (PDOException $e) {
     if ($e->getCode() == 23000) {
         $_SESSION['flash_error'] = "You've already booked this class.";

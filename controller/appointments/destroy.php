@@ -1,5 +1,5 @@
 <?php
-redirect_if_not_logged_in();
+
 $id = filter_input(INPUT_POST, 'id');
 $redirect_to = filter_input(INPUT_POST, 'redirect_to');
 $db = $container->resolve('Core\Database');
