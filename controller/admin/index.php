@@ -1,7 +1,5 @@
 <?php
 
-redirect_if_not_logged_in();
-
 $db = $container->resolve('Core\Database');
 
 $sql = "SELECT
