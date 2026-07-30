@@ -24,7 +24,7 @@ $sql = "SELECT
             ON class_events.class_type_id = class_types.id
         INNER JOIN instructors
             ON class_events.instructor_id = instructors.id
-        ORDER BY class_events.starts_at DESC
+        ORDER BY class_events.starts_at
         LIMIT 10";
 
 $bookings = $db->getAll($sql);

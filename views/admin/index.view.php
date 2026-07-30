@@ -5,19 +5,19 @@
     <main>
         <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 
-            <div class="mb-6 rounded-xl border border-[#F7C664] bg-[#426158] p-6">
+            <div class="mb-6 rounded-xl border bg-[#426158] p-6">
 
                 <h2 class="text-2xl font-bold text-white">
-                    Admin Dashboard
+                    Welcome Admin
                 </h2>
 
                 <p class="mt-2 text-gray-100">
-                    Recent Member Bookings
+                    Upcoming Member Bookings:
                 </p>
 
             </div>
 
-            <div class="overflow-hidden rounded-xl border border-[#F7C664] bg-[#53796E]">
+            <div class="overflow-hidden rounded-xl border bg-[#53796E]">
 
                 <table class="min-w-full">
 
