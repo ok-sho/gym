@@ -2,14 +2,17 @@
 PHP (8.2.4), JS, HTML, Tailwind CSS
 
 **To run:**
-- (if needed) import `config/gym.sql` to local mySQL db
-- start XAMPP servers
-- go to `http://localhost/gym`
-- log in with existing user email `ash@catchem.com` & password `1234567`
-  - or register new test user
+- (if needed) Import `config/gym.sql` to local mySQL db
+- Start XAMPP servers
+- Go to `http://localhost/gym`
+- Log in with an existing account:
+  - (regular user) email `ash@catchem.com` & password `P@s5word`
+  - (admin) email `admin@gym.com` & password `P@s5word`
+- Or register new test user
+    - To add admin access to a newly created account, change the value in the user's `is_admin` column of the users table to `1` (true). If you are logged in, you will need to log out and log in again for the change to take effect.
 
 
-### Pages Contributed
+### Contributions
 
 
 #### Aniket Sandhu
@@ -25,7 +28,8 @@ PHP (8.2.4), JS, HTML, Tailwind CSS
 - Css / design update 
 
 #### Sho Okano
-- Instructor list & individual view
-- Booking calendar 
-- Class event view
--
+- Instructor list (list all instructors)
+- Individual instructor view (display instructor's info and classes taught)
+- Booking calendar (display class events for selected week, filter by class type)
+- Class event view (display class details, check if user is already registered)
+- General project structure, database design & implementation, navigation menu & routing, middleware

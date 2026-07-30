@@ -8,7 +8,7 @@ if (!Validator::emailVal($email)){
       $error .= "Please enter a valid email address. ";
 }
 $password = filter_input(INPUT_POST,'password');
-if (!Validator::textVal($password,7,225)){
+if (!Validator::passwordVal($password)){
       $error .= "Please enter a valid password. ";
 }
 
@@ -17,7 +17,7 @@ $db = $container->resolve('Core\Database');
 $user = $db->getOne("SELECT id, concat(given_name,' ',family_name) AS full_name, password, is_admin from users where email = :email", ["email"=>$email]);
 
 if(!$user){
-      $error .= "The email is not associated with an account. ";
+      $error .= "The email is not associated with an account.";
 } elseif (!password_verify($password, $user['password'])) {
       $error .= "Credentials do not match.";
 }

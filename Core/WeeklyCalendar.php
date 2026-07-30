@@ -39,19 +39,19 @@ class WeeklyCalendar {
   }
 
   public function makeWeeksArray(int $number_of_weeks = 8){
-    for ($i=0; $i < $number_of_weeks; $i++) {
+    for ($wk=0; $wk < $number_of_weeks; $wk++) {
       $days=[];
-      for ($j=0; $j <= 7; $j++) {
+      for ($day=0; $day <= 7; $day++) {
         $days[] = [
-          'dt' => $this->getWeekDay($i, $j),
-          'dt_end' => $this->getEndOfDay($this->getWeekDay($i, $j)),
-          'str' => $this->formatDateForCalendar($this->getWeekDay($i, $j)),
+          'dt' => $this->getWeekDay($wk, $day),
+          'dt_end' => $this->getEndOfDay($this->getWeekDay($wk, $day)),
+          'str' => $this->formatDayDateMonth($this->getWeekDay($wk, $day)),
           'class_events' => [],
         ];
       }
       $this->weeks[] = [
-        'id' => $i,
-        "date_string" => $this->formatDate($this->getWeekDay($i)),
+        'id' => $wk,
+        "date_string" => $this->formatYMD($this->getWeekDay($wk)),
         "sun" => $days[0],
         "mon" => $days[1],
         "tue" => $days[2],
@@ -63,15 +63,15 @@ class WeeklyCalendar {
     }
   }
 
-  public function formatDate(DateTimeImmutable $date):string {
+  public function formatYMD(DateTimeImmutable $date):string {
     return $date->format("Y-m-d");
   }
 
-  public function formatDateTime(DateTimeImmutable $date):string {
+  public function formatYMDTime(DateTimeImmutable $date):string {
     return $date->format("Y-m-d H:i:s");
   }
 
-  public function formatDateForCalendar(DateTimeImmutable $date):string {
+  public function formatDayDateMonth(DateTimeImmutable $date):string {
     return $date->format("D d M");
   }
 

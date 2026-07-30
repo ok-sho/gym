@@ -35,14 +35,14 @@
       <table class="mt-4 border-collapse table-fixed w-full min-h-auto">
 				<thead class="text-s text-white uppercase bg-[#53796E] ">
 					<tr>
-              <?php foreach (array_slice($week_selected, 2) as $day): ?>
+              <?php foreach ($week as $day): ?>
 						    <th class="border border-x-emerald-950 border-y-[#53796E] px-3 py-3"><?= $day['str'] ?></th>
               <?php endforeach; ?>
 					</tr>
 				</thead>
 				<tbody>
           <tr class="border border-gray-300">
-            <?php foreach (array_slice($week_selected, 2) as $day): ?>
+            <?php foreach ($week as $day): ?>
               <td class="border border-[#53796E]">
                 <?php foreach ($day['class_events'] as $class_event): ?>
                   <a href="./booking/view?id=<?= $class_event['id'] ?>"> 

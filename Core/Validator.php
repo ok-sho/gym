@@ -28,4 +28,26 @@ class Validator{
     return filter_var($value,FILTER_VALIDATE_EMAIL)!==false;
   }
 
+  public static function passwordVal(string $value):bool
+  { // check: length
+    if (strlen(trim($value)) < 7 || strlen(trim($value)) > 255) {
+      return false;
+    } // has a number
+    if(!preg_match("#[0-9]+#", $value)) {
+      return false;    
+    } // has capital letter
+    if(!preg_match("#[A-Z]+#", $value)) {
+      return false;
+    } // has lowercase letter
+    if(!preg_match("#[a-z]+#", $value)) {
+      return false;
+    } // has special character
+    if(!preg_match("/[\'^£$%&*()}{@#~?><>,|=_+¬-]/", $value)) {
+      vdd($value);
+      return false;
+    }
+    return true;
+  }
+
+
 }

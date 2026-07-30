@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 29, 2026 at 10:50 PM
+-- Generation Time: Jul 30, 2026 at 06:59 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -257,8 +257,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `given_name`, `family_name`, `email`, `password`, `created_at`, `membership_tier_id`, `is_admin`) VALUES
-(1, 'Ash', 'Ketchum', 'ash@catchem.com', '$2y$10$k3k6b01jEokk3MJdKB4.WOqlAaAIPyIsQPcPSKxfRvVfzV2DXDnTa', '2026-07-11 00:52:04', 1, 0),
-(2, 'Admin', 'Istrator', 'admin@gym.com', '$2y$10$OIyr9l2J0vuvKEktp12MrOKtng0SjbWccegTNNsBQYTV6gfM4pDx.', '2026-07-29 20:41:15', NULL, 1);
+(1, 'Ash', 'Ketchum', 'ash@catchem.com', '$2y$10$bkEmzP1TU42pvtWXI07v2uLVcKeVXZj1a5X9PqSDFIz4fpdrWEA6C', '2026-07-11 00:52:04', 1, 0),
+(2, 'Admin', 'Istrator', 'admin@gym.com', '$2y$10$bkEmzP1TU42pvtWXI07v2uLVcKeVXZj1a5X9PqSDFIz4fpdrWEA6C', '2026-07-29 20:41:15', 3, 1),
+(3, 'bigly', 'wigly', 'bw@bw.ca', '$2y$10$bkEmzP1TU42pvtWXI07v2uLVcKeVXZj1a5X9PqSDFIz4fpdrWEA6C', '2026-07-30 04:11:47', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -303,7 +304,6 @@ ALTER TABLE `membership_tiers`
 ALTER TABLE `member_bookings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `class_event_id` (`class_event_id`,`user_id`),
-  ADD KEY `fk_user_id_mb` (`user_id`);
 
 --
 -- Indexes for table `member_visits`
@@ -365,7 +365,7 @@ ALTER TABLE `member_visits`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -391,9 +391,6 @@ ALTER TABLE `class_instructors`
 ALTER TABLE `member_bookings`
   ADD CONSTRAINT `fk_class_event_id` FOREIGN KEY (`class_event_id`) REFERENCES `class_events` (`id`),
   ADD CONSTRAINT `fk_user_id_mb` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
-ALTER TABLE `member_bookings`
-  ADD UNIQUE KEY `unique_user_class_event` (`user_id`, `class_event_id`);
 
 --
 -- Constraints for table `member_visits`
