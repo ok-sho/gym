@@ -19,7 +19,7 @@ PHP (8.2.4), JS, HTML, Tailwind CSS
 - 404 page 
 - account info page 
 - membership page 
-- 
+- Admin
 
 #### Gurkeerit Braich
 - My Bookings (View bookings, Reschedule Appointment, Cancel Booking)
